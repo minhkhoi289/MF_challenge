@@ -11,7 +11,7 @@ class CheckingsController < ApplicationController
 
     if booking.present?
       if Time.now - booking.start_time > 10.minutes
-        booking.update()
+        booking.update(status: :expired)
 
         return render json: { status: 'error', message: 'You are late for this booking' }, status: :unprocessable_entity
       end

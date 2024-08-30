@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2024_08_30_072659) do
   create_table "bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "seat_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "startTime"
-    t.datetime "endTime"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

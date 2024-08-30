@@ -2,9 +2,10 @@ class Api::V1::BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    bookings = Booking.all
-    bookings = booking.where(user_id: params[:user_id]) if params[:user_id]
-    bookings = booking.where(seat_id: params[:seat_id]) if params[:seat_id]
+    byebug
+    bookings = Booking.where(status: :booked)
+    bookings = bookings.where(user_id: params[:user_filter_id]) if params[:user_filter_id]
+    bookings = bookings.where(seat_id: params[:seat_id]) if params[:seat_id]
 
     render json: { status: 'success', records: bookings }
   end

@@ -2,7 +2,11 @@ class Booking < ApplicationRecord
   belongs_to :seat
   belongs_to :user
 
-  enum: status: %i[booked cancelled expired]
+  enum status: {
+    booked: "booked",
+    cancelled: "cancelled",
+    expired: "expired"
+  }
 
   validate :already_booked?, on: :create
   validate :user_booked?, on: :create
