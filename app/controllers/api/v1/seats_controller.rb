@@ -1,4 +1,6 @@
 class Api::V1::SeatsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     render json: { status: 'success', records: seats_payload(Seat.all.includes(:bookings))}
   end

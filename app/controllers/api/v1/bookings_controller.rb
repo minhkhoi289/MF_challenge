@@ -1,4 +1,6 @@
 class Api::V1::BookingsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     bookings = Booking.all
     bookings = booking.where(user_id: params[:user_id]) if params[:user_id]
